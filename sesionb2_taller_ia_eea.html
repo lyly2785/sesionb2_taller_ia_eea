@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sesión B2 · Taller IA · Elite Expert Academy</title>
+<style>
+  :root{
+    --navy-dark:#121B3A;
+    --navy:#1E2D6B;
+    --gold:#F5C842;
+    --grey-bg:#F7F7F9;
+    --text:#1A1A1A;
+    --muted:#5A5F73;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--text);
+    background:var(--grey-bg);
+    line-height:1.6;
+  }
+  header.site{
+    background:var(--navy-dark);
+    color:#fff;
+    padding:40px 24px;
+  }
+  .container{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  header.site .container{padding:0 24px;}
+  .brand{
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:bold;
+    margin-bottom:8px;
+  }
+  h1.title{
+    font-size:32px;
+    margin:0 0 6px 0;
+    color:#fff;
+  }
+  .subtitle{
+    color:#C9CEE8;
+    font-size:16px;
+    margin:0;
+  }
+  main{padding:40px 0 80px;}
+  section.block{
+    background:#fff;
+    border:1px solid #E5E5EA;
+    border-radius:8px;
+    padding:32px;
+    margin-bottom:28px;
+  }
+  .block-number{
+    font-size:13px;
+    letter-spacing:2px;
+    color:var(--navy);
+    font-weight:bold;
+    margin-bottom:6px;
+  }
+  .block h2{
+    font-size:24px;
+    margin:0 0 4px 0;
+    color:var(--navy-dark);
+  }
+  .block h3{
+    font-size:18px;
+    margin:18px 0 6px 0;
+    color:var(--navy);
+  }
+  .block p{
+    color:var(--muted);
+    margin:6px 0 14px 0;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--navy);
+    color:#fff;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:14px;
+  }
+  .btn:hover{background:var(--navy-dark);}
+  .btn.gold{
+    background:var(--gold);
+    color:var(--navy-dark);
+  }
+  .btn.gold:hover{background:#e0b438;}
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:16px;
+    margin-top:16px;
+  }
+  .card{
+    border:1px solid #E5E5EA;
+    border-radius:8px;
+    padding:18px;
+    text-align:center;
+  }
+  .card .icon{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:20px;
+    margin:0 auto 12px auto;
+  }
+  .card h4{
+    margin:0 0 4px 0;
+    font-size:16px;
+    color:var(--navy-dark);
+  }
+  .card .org{
+    font-size:12px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:8px;
+  }
+  .card p{font-size:13px; margin:0 0 12px 0;}
+  .prompt-box{
+    background:var(--grey-bg);
+    border-left:4px solid var(--gold);
+    border-radius:0 6px 6px 0;
+    padding:14px 18px;
+    font-size:14px;
+    color:var(--text);
+    margin:10px 0;
+  }
+  .prompt-box.bad{border-left-color:#C8434E;}
+  .prompt-box.good{border-left-color:#1E7A34;}
+  .tag{
+    display:inline-block;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:4px;
+    margin-bottom:8px;
+  }
+  .tag.bad{background:#FBE6E8; color:#C8434E;}
+  .tag.good{background:#E6F4EA; color:#1E7A34;}
+  .tag.warn{background:#FDF1D6; color:#8A6200;}
+  ul.checklist{padding-left:20px; color:var(--muted);}
+  ul.checklist li{margin-bottom:6px;}
+  ol.steps{padding-left:20px; color:var(--text);}
+  ol.steps li{margin-bottom:10px;}
+  .steps-grid{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:14px;
+  }
+  .step{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+  }
+  .step .num{
+    flex:0 0 32px;
+    height:32px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:14px;
+  }
+  .step p{margin:4px 0 0 0;}
+  .warn-box{
+    background:var(--navy-dark);
+    color:#fff;
+    border-radius:8px;
+    padding:18px 22px;
+    margin-top:16px;
+    font-size:14px;
+  }
+  .warn-box strong{color:var(--gold);}
+  footer.site{
+    background:var(--navy-dark);
+    color:#C9CEE8;
+    padding:32px 0;
+    font-size:13px;
+  }
+  footer.site .container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:20px;
+  }
+  footer.site .bio h4{
+    color:#fff;
+    margin:0 0 6px 0;
+  }
+  footer.site .meta{text-align:right;}
+  .timeline{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+  }
+  .timeline span{
+    background:var(--grey-bg);
+    border:1px solid #E5E5EA;
+    border-radius:20px;
+    padding:6px 14px;
+    font-size:12px;
+    color:var(--navy);
+    font-weight:bold;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <div class="brand">Vitaminas Tecnológicas · Capacitación IA</div>
+    <h1 class="title">Taller de IA Aplicada — Elite Expert Academy</h1>
+    <p class="subtitle">Sesión B2 · Plantillas, logo institucional e imágenes con IA · Grupo B — Académico · Ref. TEM-EEA-001-2026</p>
+    <div class="timeline">
+      <span>90 minutos</span>
+      <span>3 participantes</span>
+      <span>Virtual · Zoom / Meet</span>
+      <span>Instructora: Liliana Bayona Castañeda</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="block">
+    <div class="block-number">PRESENTACIÓN DEL TALLER</div>
+    <h2>Materiales de la Sesión B2</h2>
+    <p>Descarga la presentación de la sesión y el material de apoyo con los pasos y prompts usados en vivo.</p>
+    <a class="btn" href="GUI-EEA-B2-2026_v1_Presentacion_SesionB2.pptx">[DESCARGAR PRESENTACIÓN — PPTX]</a>
+    &nbsp;
+    <a class="btn gold" href="MaterialApoyo_SesionB2.pdf">[DESCARGAR MATERIAL DE APOYO — PDF]</a>
+  </section>
+
+  <section class="block">
+    <div class="block-number">00 //</div>
+    <h2>Antes de empezar</h2>
+    <h3>Repaso rápido de la Sesión B1</h3>
+    <p>Ronda de 1 minuto por persona: ¿qué usaste de NotebookLM esta semana? Hoy cerramos el ciclo de material didáctico con plantillas propias y el logo de EEA aplicado, más imágenes generadas con IA para tus clases.</p>
+  </section>
+
+  <section class="block">
+    <div class="block-number">01 //</div>
+    <h2>Plantillas y formatos con IA + logo institucional</h2>
+    <p>Caso real de referencia: la Clase III de Karen (Dermapen) ya sigue un estándar de 6 partes. Lo formalizamos como plantilla para que cada una construya la suya.</p>
+    <div class="cards">
+      <div class="card"><div class="icon">1</div><h4>Portada</h4><p>Título + gancho</p></div>
+      <div class="card"><div class="icon">2</div><h4>Cronograma</h4><p>Semana del módulo</p></div>
+      <div class="card"><div class="icon">3</div><h4>Insumos</h4><p>Materiales necesarios</p></div>
+      <div class="card"><div class="icon">4</div><h4>Contenido</h4><p>Protocolo paso a paso</p></div>
+      <div class="card"><div class="icon">5</div><h4>Evaluación</h4><p>Formulario y plazo</p></div>
+      <div class="card"><div class="icon">6</div><h4>Cierre</h4><p>Marca EEA</p></div>
+    </div>
+
+    <h3>Prompt para generar tu formato</h3>
+    <span class="tag good">Úsalo así</span>
+    <div class="prompt-box good">
+      "Genera un formato de [ficha de cronograma / documento de traspaso / ficha de clase] para Elite Expert Academy, siguiendo esta estructura: portada con título, cronograma o contexto, contenido principal, cierre con marca EEA. Tono profesional y claro, listo para aplicarle el logo institucional."
+    </div>
+    <p>Práctica: Tatiana → ficha de cronograma · Ingrid → documento comercial-académico · Alba → ficha de clase para docentes.</p>
+  </section>
+
+  <section class="block">
+    <div class="block-number">02 //</div>
+    <h2>Crear imágenes con IA para apoyo de clases</h2>
+    <p>Dos caminos según lo que necesites:</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">G</div>
+        <h4>Gemini</h4>
+        <div class="org">Google</div>
+        <p>Genera la imagen directo en el chat. Rápido para probar ideas.</p>
+        <a class="btn" href="https://gemini.google.com" target="_blank">Abrir Gemini →</a>
+      </div>
+      <div class="card">
+        <div class="icon">C</div>
+        <h4>Canva (IA)</h4>
+        <div class="org">Canva</div>
+        <p>Genera e inserta la imagen directo en tu diapositiva, con el logo ya aplicado.</p>
+        <a class="btn" href="https://canva.com" target="_blank">Abrir Canva →</a>
+      </div>
+    </div>
+    <div class="warn-box">
+      <strong>Advertencia importante:</strong> la imagen generada con IA es apoyo visual y decorativo. Nunca debe usarse como referencia técnica exacta de un procedimiento estético — mapeos, profundidades o protocolos siguen viniendo del contenido validado por la docente.
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-number">03 //</div>
+    <h2>Integración en PPT</h2>
+    <div class="steps-grid">
+      <div class="step"><div class="num">1</div><p>Abre tu diapositiva base, con el logo ya aplicado del bloque anterior.</p></div>
+      <div class="step"><div class="num">2</div><p>Inserta la imagen generada con IA.</p></div>
+      <div class="step"><div class="num">3</div><p>Ajusta tamaño y posición sin tapar texto ni el logo.</p></div>
+      <div class="step"><div class="num">4</div><p>Guarda como plantilla lista para tu próxima clase.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-number">04 //</div>
+    <h2>Cierre — Kahoot</h2>
+    <p>Preguntas mixtas de B1 (NotebookLM) y B2 (plantillas, logo, imágenes con IA). Si no se alcanza a jugar en vivo, queda disponible aquí como repaso.</p>
+    <a class="btn gold" href="https://kahoot.it" target="_blank">Jugar Kahoot →</a>
+  </section>
+
+  <section class="block">
+    <div class="block-number">05 //</div>
+    <h2>Encuesta de satisfacción</h2>
+    <p>Última sesión del Grupo B: además de evaluar la sesión de hoy, incluye tu opinión sobre el programa completo (Sesión 0 + B1 + B2).</p>
+    <a class="btn gold" href="#" target="_blank">Responder encuesta →</a>
+  </section>
+
+  <section class="block">
+    <div class="block-number">RECURSO PARA ALBA</div>
+    <h2>Documento de recomendaciones</h2>
+    <p>No se enseña en vivo — se entrega al cierre de la sesión. Incluye:</p>
+    <ul class="checklist">
+      <li>Listado de herramientas tecnológicas por función.</li>
+      <li>Plantilla de estructura de clase con rúbrica, basada en el patrón de la Clase III.</li>
+      <li>Catálogo de plantillas ya usadas (cronograma histórico de Canva), para no reinventar lo que ya existe.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="container">
+    <div class="bio">
+      <h4>Liliana Bayona Castañeda</h4>
+      <p style="max-width:480px;">Ingeniera de Sistemas · Magíster en Gestión de la Información (UPV España, becaria PRONABEC) · Docente universitaria UCV · Especialista en Calidad e Información (ISO 9001, Power BI, SharePoint).</p>
+    </div>
+    <div class="meta">
+      Vitaminas Tecnológicas<br>
+      @vitaminas_tecnologicas<br>
+      administracion@vitaminas-tecnologicas.com<br>
+      TEM-EEA-001-2026 · Sesión B2
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
